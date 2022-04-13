@@ -1,5 +1,5 @@
 import { gql } from 'graphql-request'
-import { Block } from 'state/info/types'
+import { Block } from 'state/types'
 
 export const getDerivedPrices = (tokenAddress: string, blocks: Block[]) =>
   blocks.map(
