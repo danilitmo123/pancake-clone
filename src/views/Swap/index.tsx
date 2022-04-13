@@ -9,7 +9,6 @@ import {
   useModal,
   Flex,
   IconButton,
-  BottomDrawer,
   useMatchBreakpoints,
   ArrowUpDownIcon,
   Skeleton,
@@ -61,23 +60,23 @@ import {
 import CircleLoader from '../../components/Loader/CircleLoader'
 import Page from '../Page'
 import SwapWarningModal from './components/SwapWarningModal'
-import PriceChartContainer from './components/Chart/PriceChartContainer'
 import { StyledInputCurrencyWrapper, StyledSwapContainer } from './styles'
 import CurrencyInputHeader from './components/CurrencyInputHeader'
 
 const Label = styled(Text)`
   font-size: 12px;
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: #B8ADD2;
 `
 
 const SwitchIconButton = styled(IconButton)`
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
+  
   .icon-up-down {
     display: none;
   }
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primary};
+    background-color: rgba(51, 204, 102, 0.7);
     .icon-down {
       display: none;
       fill: white;
@@ -88,6 +87,21 @@ const SwitchIconButton = styled(IconButton)`
     }
   }
 `
+
+const CustomButton = styled.button`
+  display: inline-block;
+  background: #33cc66;
+  color: rgb(255,255,255);
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all ease 0.15s;
+  outline: none;
+  width: 100%;
+`;
 
 export default function Swap() {
   const router = useRouter()
@@ -389,7 +403,7 @@ export default function Swap() {
                 hasAmount={hasAmount}
                 onRefreshPrice={onRefreshPrice}
               />
-              <Wrapper id="swap-page" style={{ minHeight: '412px' }}>
+              <Wrapper id="swap-page" style={{ minHeight: '412px', background: '#171731' }}>
                 <AutoColumn gap="sm">
                   <CurrencyInputPanel
                     label={
@@ -421,6 +435,7 @@ export default function Swap() {
                         />
                         <ArrowUpDownIcon
                           className="icon-up-down"
+                          fill={'#33cc66'}
                           color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? 'primary' : 'text'}
                         />
                       </SwitchIconButton>
@@ -476,7 +491,7 @@ export default function Swap() {
                       </RowBetween>
                       <RowBetween align="center">
                         <Label>{t('Slippage Tolerance')}</Label>
-                        <Text bold color="primary">
+                        <Text bold style={{ color: '#33cc66' }}>
                           {allowedSlippage / 100}%
                         </Text>
                       </RowBetween>
@@ -485,16 +500,16 @@ export default function Swap() {
                 </AutoColumn>
                 <Box mt="0.25rem">
                   {swapIsUnsupported ? (
-                    <Button width="100%" disabled>
+                    <CustomButton disabled>
                       {t('Unsupported Asset')}
-                    </Button>
+                    </CustomButton>
                   ) : !account ? (
                     <ConnectWalletButton width="100%" />
                   ) : showWrap ? (
-                    <Button width="100%" disabled={Boolean(wrapInputError)} onClick={onWrap}>
+                    <CustomButton disabled={Boolean(wrapInputError)} onClick={onWrap}>
                       {wrapInputError ??
                         (wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
-                    </Button>
+                    </CustomButton>
                   ) : noRoute && userHasSpecifiedInputOutput ? (
                     <GreyCard style={{ textAlign: 'center', padding: '0.75rem' }}>
                       <Text color="textSubtle">{t('Insufficient liquidity for this trade.')}</Text>

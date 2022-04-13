@@ -45,6 +45,24 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.input};
   box-shadow: ${({ theme }) => theme.shadows.inset};
 `
+
+const SecondaryButton = styled.button`
+  border: 2px solid #33cc66;
+  color: #33cc66;
+  font-weight: 600;
+  height: 20px;
+  border-radius: 16px;
+  font-size: 12px;
+  cursor: pointer;
+  width: 50px;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  transition: background-color 0.2s,opacity 0.2s;
+  background-color: transparent;
+`;
+
 interface CurrencyInputPanelProps {
   value: string
   onUserInput: (value: string) => void
@@ -178,9 +196,9 @@ export default function CurrencyInputPanel({
           </LabelRow>
           <InputRow selected={disableCurrencySelect}>
             {account && currency && showMaxButton && label !== 'To' && (
-              <Button onClick={onMax} scale="xs" variant="secondary">
+              <SecondaryButton onClick={onMax}>
                 {t('Max').toLocaleUpperCase(locale)}
-              </Button>
+              </SecondaryButton>
             )}
           </InputRow>
         </Container>
