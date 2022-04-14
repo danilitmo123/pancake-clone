@@ -37,7 +37,7 @@ import ImportTokenWarningModal from './components/ImportTokenWarningModal'
 import ProgressSteps from './components/ProgressSteps'
 import { AppBody } from '../../components/App'
 import ConnectWalletButton from '../../components/ConnectWalletButton'
-
+import Header from '../../components/Header'
 import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 import { useCurrency, useAllTokens } from '../../hooks/Tokens'
 import { ApprovalState, useApproveCallbackFromTrade } from '../../hooks/useApproveCallback'
@@ -391,6 +391,7 @@ export default function Swap() {
 
   return (
     <Page removePadding={isChartExpanded} hideFooterOnDesktop={isChartExpanded}>
+      <Header />
       <Flex flexDirection="column">
         <StyledSwapContainer $isChartExpanded={isChartExpanded}>
           <StyledInputCurrencyWrapper mt={isChartExpanded ? '24px' : '0'}>

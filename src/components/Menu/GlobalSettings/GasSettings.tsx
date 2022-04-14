@@ -4,6 +4,7 @@ import { useTranslation } from 'contexts/Localization'
 import { useGasPriceManager } from 'state/user/hooks'
 import { GAS_PRICE_GWEI, GAS_PRICE } from 'state/types'
 
+
 const GasSettings = () => {
   const { t } = useTranslation()
   const [gasPrice, setGasPrice] = useGasPriceManager()

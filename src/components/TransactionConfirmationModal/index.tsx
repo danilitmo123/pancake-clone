@@ -32,6 +32,8 @@ const Section = styled(AutoColumn)`
 
 const ConfirmedIcon = styled(ColumnCenter)`
   padding: 24px 0;
+  margin-top: 50px;
+  margin-bottom: 50px;
 `
 
 function ConfirmationPendingContent({ pendingText }: { pendingText: string }) {
@@ -180,7 +182,7 @@ const TransactionConfirmationModal: React.FC<InjectedModalProps & ConfirmationMo
   if (!chainId) return null
 
   return (
-    <Modal title={title} headerBackground="gradients.cardHeader" onDismiss={handleDismiss}>
+    <Modal title={title} style={{ backgroundColor: '#171731'}} onDismiss={handleDismiss}>
       {attemptingTxn ? (
         <ConfirmationPendingContent pendingText={pendingText} />
       ) : hash ? (

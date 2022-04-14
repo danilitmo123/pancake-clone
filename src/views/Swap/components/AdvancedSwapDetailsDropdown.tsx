@@ -9,7 +9,6 @@ const AdvancedDetailsFooter = styled.div<{ show: boolean }>`
   width: 100%;
   max-width: 400px;
   border-radius: 20px;
-  background-color: ${({ theme }) => theme.colors.invertedContrast};
 
   transform: ${({ show }) => (show ? 'translateY(0%)' : 'translateY(-100%)')};
   transition: transform 300ms ease-in-out;
@@ -19,7 +18,7 @@ export default function AdvancedSwapDetailsDropdown({ trade, ...rest }: Advanced
   const lastTrade = useLastTruthy(trade)
 
   return (
-    <AdvancedDetailsFooter show={Boolean(trade)}>
+    <AdvancedDetailsFooter show={Boolean(trade)} style={{ backgroundColor: '#171731'}}>
       <AdvancedSwapDetails {...rest} trade={trade ?? lastTrade ?? undefined} />
     </AdvancedDetailsFooter>
   )
