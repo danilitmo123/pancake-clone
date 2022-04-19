@@ -11,7 +11,7 @@ const Block = styled.header`
   max-width: 1160px;
   padding: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 100px;
+  margin-bottom: 10%;
   margin-top: 20px;
 
   @media (max-width: 768px) {
